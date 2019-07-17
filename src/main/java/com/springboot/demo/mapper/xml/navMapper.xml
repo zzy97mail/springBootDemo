@@ -3,7 +3,9 @@
 <mapper namespace="com.springboot.demo.mapper.navMapper" >
 
     <select id="selectAllMessage" resultType="Map">
-        select * from springBoot.nav
+        select nav_id,nav_name,nav_feight
+        from springBoot.nav
+        order by nav_feight
     </select>
 
 </mapper>

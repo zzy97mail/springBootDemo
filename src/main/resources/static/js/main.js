@@ -1,18 +1,23 @@
 $(function () {
     pageLoad();
-
+    $(".jump").click(function () {
+        sessionStorage.setItem("page",$(this).attr("page"));
+    });
 });
 
 
 //页面加载时执行的函数
 function pageLoad() {
-    var page = getQueryString("page");
+    var page = sessionStorage.getItem("page");
     var content = $("#content");
     content.empty();
     var url = "";
     switch (page) {
         case "1" :
             url = "../small/index.html";
+            break;
+        case "2" :
+            url = "../small/type.html";
             break;
     }
     var html_page = '<iframe style="height: 98%; width: 100%" src="' + url + '"></iframe>';
