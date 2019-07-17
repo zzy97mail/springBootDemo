@@ -34,10 +34,10 @@ mybatis:
   mapper-locations: classpath:com/springboot/demo/mapper/xml/*.xml
   type-aliases-package: springboot.test.model
 
-#pagehelper:
-#  helperDialect: mysql
-#  reasonable: true
-#  supportMethodsArguments: true
-#  params: count=countSql
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 logging.level.com.springboot.demo.mapper: debug

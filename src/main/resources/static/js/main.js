@@ -1,5 +1,5 @@
 $(function () {
- pageLoad();
+    pageLoad();
 
 });
 
@@ -9,9 +9,14 @@ function pageLoad() {
     var page = getQueryString("page");
     var content = $("#content");
     content.empty();
+    var url = "";
     switch (page) {
-        case "1" : content.append('<iframe style="height: 98%; width: 100%" src="../small/index.html"></iframe>');console.log(123);break;
+        case "1" :
+            url = "../small/index.html";
+            break;
     }
+    var html_page = '<iframe style="height: 98%; width: 100%" src="' + url + '"></iframe>';
+    content.append(html_page);
 }
 
 /**

@@ -1,5 +1,7 @@
 package com.springboot.demo.controller;
 
+import com.springboot.demo.common.R;
+import com.springboot.demo.mapper.articleMapper;
 import com.springboot.demo.mapper.peopleMapper;
 import com.springboot.demo.service.peopleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +14,12 @@ import java.util.List;
 @RestController
 public class TestController {
 
-
     @Autowired
-    private peopleService service;
-
+    private articleMapper articleMapper;
 
     @RequestMapping("test")
-    public List GetPeople() throws Exception{
-        return service.selectAllMessage();
+    public R GetPeople() throws Exception{
+        return R.ok(articleMapper.selectAllMessage());
     }
 
 
