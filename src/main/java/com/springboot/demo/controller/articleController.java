@@ -17,15 +17,15 @@ public class articleController {
 
     @RequestMapping("/getAllMsg")
     public R getAllMsg() throws Exception {
-        PageObj pageObj = new PageObj();
-        Page<?> page = PageHelper.startPage(1, 5, true);
-        articleService.selectAllMessage();
-        pageObj.setPageToals(page.getPages());
-        pageObj.setRows(page.getResult());
-        pageObj.setTotal(page.getTotal());
-        pageObj.setPageNum(1);
-        pageObj.setPageSize(5);
+//        PageObj pageObj = new PageObj();
+//        Page<?> page = PageHelper.startPage(1, 5, true);
+//        articleService.selectAllMessage();
+//        pageObj.setPageToals(page.getPages());
+//        pageObj.setRows(page.getResult());
+//        pageObj.setTotal(page.getTotal());
+//        pageObj.setPageNum(1);
+//        pageObj.setPageSize(5);
 
-        return R.ok(pageObj);
+        return R.ok();
     }
 }
