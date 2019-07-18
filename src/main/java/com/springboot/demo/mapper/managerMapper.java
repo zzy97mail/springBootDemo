@@ -14,4 +14,6 @@ public interface managerMapper {
     List getAllMsg();
 
     int upsertById(Map map);
+
+    int deleteById(String managerId);
 }

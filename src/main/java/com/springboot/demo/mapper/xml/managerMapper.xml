@@ -21,4 +21,9 @@
                                 manager_pwd=#{managerPwd}
     </insert>
 
+    <delete id="deleteById">
+        delete from springBoot.manager
+        where manager_id = #{managerId}
+    </delete>
+
 </mapper>

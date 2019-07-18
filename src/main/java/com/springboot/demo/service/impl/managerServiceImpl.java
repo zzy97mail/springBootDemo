@@ -37,4 +37,9 @@ public class managerServiceImpl implements managerService {
     public int upsertById(Map map) throws Exception {
         return managerMapper.upsertById(map);
     }
+
+    @Override
+    public int deleteById(String managerId) throws Exception {
+        return managerMapper.deleteById(managerId);
+    }
 }

@@ -41,4 +41,10 @@ public class LoginController {
         return R.ok();
     }
 
+    @RequestMapping("deleteById")
+    public R deleteById(String managerId) throws Exception {
+        managerService.deleteById(managerId);
+        return R.ok();
+    }
+
 }

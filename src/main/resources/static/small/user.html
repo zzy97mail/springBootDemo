@@ -15,6 +15,7 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
+<script src="../plug/jquery/jquery-3.4.1.min.js"></script>
 <script src="../plug/layui/layui.js"></script>
 <script>
     // layui.use('layedit', function(){
@@ -60,6 +61,8 @@
                 document.location.href = "userEdit.html?page=1";
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除行么', function(index){
+                    deleteById(data.managerId)
+
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                     layer.close(index);
                     //向服务端发送删除指令
@@ -76,6 +79,36 @@
         });
     });
 
+    function deleteById(id) {
+        $.ajax({
+            url: "/LoginController/deleteById",
+            contentType: "application/x-www-form-urlencoded",
+            type:"post",
+            data:{
+                managerId:id
+            },
+            success: function(data){
+                console.log(data);
+                if (data.code == 0){
+                    layui.use('layer', function () {
+                        layui.layer.confirm('删除成功', {
+                            btn: ['确定']
+                            , btn1:function(index){
+                                layer.close(index);
+                            },cancel:function f() {
+                                return;
+                            }
+                        });
+                    })
+                } else {
+                    $("#msg").text("删除失败");
+                }
+            },
+            error:function (e) {
+                console.error(e);
+            }
+        });
+    }
 
 </script>
 </body>
