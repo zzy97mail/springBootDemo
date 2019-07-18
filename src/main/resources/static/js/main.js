@@ -1,5 +1,4 @@
 $(function () {
-
     pageLoad();
     $(".jump").click(function () {
         sessionStorage.setItem("page",$(this).attr("page"));

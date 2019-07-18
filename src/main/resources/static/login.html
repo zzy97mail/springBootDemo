@@ -24,39 +24,8 @@
         <p>XX学院  地址：XXXX<br/>电话：XXXXX  邮编：XXXXX</p>
     </div>
 </div>
-<script src="plug/layui/lay/modules/layer.js"></script>
 <script src="plug/jquery/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-    function postForm(){
-        var manager_id=document.getElementById("username").value;
-        var manager_pwd=document.getElementById("password").value;
-        document.getElementById("msg").innerHTML="";
-        if(manager_pwd == "" || manager_id==""){
-            $("#msg").text("请输入用户名或密码");
-            return;
-        }
-        $.ajax({
-                url: "getIsLogin",
-                contentType: "application/x-www-form-urlencoded",
-                type:"post",
-                data:{
-                    username:$("#username").val(),
-                    password:$("#password").val()
-                },
-                success: function(data){
-                    console.log(data);
-                    if (data.code == 0){
-                        sessionStorage.setItem("page","1");
-                        document.location.href = "main.html";
-                    } else {
-                        $("#msg").text("用户名或密码错误");
-                    }
-                },
-                error:function (e) {
-                    console.error(e);
-                }
-        });
-    }
-</script>
+<script src="plug/layui/layui.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
