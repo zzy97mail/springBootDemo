@@ -39,20 +39,7 @@ function pageLoad() {
     content.append(html_page);
 }
 
-/**
- * 获取url后面的参数
- *
- * @param name 参数名字
- * @returns {string|null}
- */
-function getQueryString(name) {
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) {
-        return unescape(r[2]);
-    }
-    return null;
-}
+
 //退出登录
 function loginOut() {
     document.location.href = "login.html";

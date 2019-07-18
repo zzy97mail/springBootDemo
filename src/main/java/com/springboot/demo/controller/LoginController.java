@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("LoginController")
 public class LoginController {
@@ -26,6 +29,16 @@ public class LoginController {
     @RequestMapping("getAllMsg")
     public R getAllMsg(Integer page,Integer rows) throws Exception {
         return R.ok(managerService.getAllMsg(page,rows));
+    }
+
+    @RequestMapping("upsertById")
+    public R upsertById(String managerId,String managerName,String managerPwd) throws Exception {
+        Map map = new HashMap();
+        map.put("managerId",managerId);
+        map.put("managerName",managerName);
+        map.put("managerPwd",managerPwd);
+        managerService.upsertById(map);
+        return R.ok();
     }
 
 }

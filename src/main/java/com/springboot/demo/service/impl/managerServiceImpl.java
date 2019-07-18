@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -30,5 +31,10 @@ public class managerServiceImpl implements managerService {
         Page<?> page1 = PageHelper.startPage(page, rows, true);
         managerMapper.getAllMsg();
         return Utils.returnPage(pageObj,page1,page,rows);
+    }
+
+    @Override
+    public int upsertById(Map map) throws Exception {
+        return managerMapper.upsertById(map);
     }
 }
