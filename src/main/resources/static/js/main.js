@@ -1,4 +1,5 @@
 $(function () {
+
     pageLoad();
     $(".jump").click(function () {
         sessionStorage.setItem("page",$(this).attr("page"));
@@ -9,6 +10,18 @@ $(function () {
 //页面加载时执行的函数
 function pageLoad() {
     var page = sessionStorage.getItem("page");
+    if (page == null){
+        layui.use('layer', function () {
+            layui.layer.confirm('还未登录', {
+                btn: ['确定']
+                , btn1:function(){
+                    document.location.href = "login.html";
+                },cancel:function f() {
+                    document.location.href = "login.html";
+                }
+            });
+        })
+    }
     var content = $("#content");
     content.empty();
     var url = "";
