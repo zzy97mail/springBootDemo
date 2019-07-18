@@ -10,22 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("articleController")
 public class articleController {
 
     @Autowired
     private articleService articleService;
 
     @RequestMapping("/getAllMsg")
-    public R getAllMsg() throws Exception {
-//        PageObj pageObj = new PageObj();
-//        Page<?> page = PageHelper.startPage(1, 5, true);
-//        articleService.selectAllMessage();
-//        pageObj.setPageToals(page.getPages());
-//        pageObj.setRows(page.getResult());
-//        pageObj.setTotal(page.getTotal());
-//        pageObj.setPageNum(1);
-//        pageObj.setPageSize(5);
-
-        return R.ok();
+    public R getAllMsg(Integer page,Integer rows,String title,String navId) throws Exception {
+        return R.ok(articleService.getArticle(navId,title,page,rows));
     }
 }
