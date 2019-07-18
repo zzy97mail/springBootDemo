@@ -19,13 +19,14 @@
         table.render({
             elem: '#type'
             ,height: 312
-            ,url: '/getAllMsgByPage' //数据接口
+            ,url: '/LoginController/getAllMsg' //数据接口
             ,page: true //开启分页
             ,request: {
                 pageName: 'page' //页码的参数名称，默认：page
                 ,limitName: 'rows' //每页数据量的参数名，默认：limit
             }
             ,parseData: function(res){ //res 即为原始返回的数据
+                console.log(res)
                 return {
                     "code": res.code, //解析接口状态
                     "msg": res.msg, //解析提示文本
@@ -36,7 +37,7 @@
             ,cols: [[ //表头
                 // {field: 'checked', title: '选择', type:"checkbox", sort: true}
                 {field: 'id', title: '序号',type:"numbers",width:80, sort: true}
-                ,{field: 'manager_name', title: '登录帐号'}
+                ,{field: 'manager_id', title: '登录帐号'}
                 ,{field: 'manager_name', title: '真实姓名'}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#bar'}
             ]]

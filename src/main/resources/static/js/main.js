@@ -31,6 +31,9 @@ function pageLoad() {
         case "2" :
             url = "../small/type.html";
             break;
+        case "3":
+            url = "../small/user.html";
+            break;
     }
     var html_page = '<iframe style="height: 98%; width: 100%" src="' + url + '"></iframe>';
     content.append(html_page);

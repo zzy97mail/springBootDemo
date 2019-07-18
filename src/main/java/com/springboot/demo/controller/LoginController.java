@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("LoginController")
 public class LoginController {
 
     @Autowired
@@ -19,6 +20,12 @@ public class LoginController {
         }else {
             return R.error();
         }
+    }
+
+
+    @RequestMapping("getAllMsg")
+    public R getAllMsg(Integer page,Integer rows) throws Exception {
+        return R.ok(managerService.getAllMsg(page,rows));
     }
 
 }

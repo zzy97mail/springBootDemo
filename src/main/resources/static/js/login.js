@@ -7,7 +7,7 @@ function postForm(){
         return;
     }
     $.ajax({
-        url: "getIsLogin",
+        url: "/LoginController/getIsLogin",
         contentType: "application/x-www-form-urlencoded",
         type:"post",
         data:{

@@ -8,4 +8,9 @@
         where manager_name = #{managerName}
     </select>
 
+    <select id="getAllMsg" resultType="Map">
+        select manager_id,manager_name
+        from springBoot.manager
+    </select>
+
 </mapper>
