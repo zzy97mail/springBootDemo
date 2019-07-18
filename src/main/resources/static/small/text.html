@@ -7,6 +7,22 @@
 </head>
 <body>
 <h1 style="text-align: center;">文章管理</h1>
+<div class="layui-form">
+    <div class="layui-input-inline">
+        <select name="interest" id="typeSelect" lay-filter="aihao">
+            <option value="0">请选择</option>
+
+        </select>
+    </div>
+    <div class="layui-input-inline">
+        <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-input-inline">
+        <button type="button" class="layui-btn">
+            <i class="layui-icon">&#xe609;</i> 搜索
+        </button>
+    </div>
+</div>
 <table id="type" lay-filter="test"></table>
 <!--<textarea id="demo" style="display: none;"></textarea>-->
 <!--<button type="button" class="layui-btn layui-btn-normal">添加</button>-->
@@ -15,12 +31,33 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
+<script src="../plug/jquery/jquery-3.4.1.min.js"></script>
 <script src="../plug/layui/layui.js"></script>
 <script>
     // layui.use('layedit', function(){
     //     var layedit = layui.layedit;
     //     layedit.build('demo'); //建立编辑器
     // });
+    $(function () {
+        $.ajax({
+            url: "/navController/getAllMsgNoPage",
+            contentType: "application/x-www-form-urlencoded",
+            type:"get",
+            success: function(data){
+                console.log(data);
+                data.data.forEach(function (value) {
+                    $("#typeSelect").append('<option value="'+value.nav_id+'">'+value.nav_name+'</option>');
+                })
+                layui.form.render('select');
+            },
+            error:function (e) {
+                console.error(e);
+            }
+        });
+    })
+    layui.use('form', function(){
+        var form = layui.form;
+    });
     layui.use('table', function(){
         var table = layui.table;
         table.render({

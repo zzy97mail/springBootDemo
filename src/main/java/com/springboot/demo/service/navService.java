@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface navService {
     PageObj selectAllMessage(Integer page,Integer rows) throws Exception;
+    List selectAllMsgNoPage()throws Exception;
 }

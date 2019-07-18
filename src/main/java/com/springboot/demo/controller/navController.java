@@ -19,4 +19,9 @@ public class navController {
         return R.ok(navService.selectAllMessage(page,rows));
     }
 
+    @RequestMapping("getAllMsgNoPage")
+    public R getAllMsgNoPage() throws Exception{
+        return R.ok(navService.selectAllMsgNoPage());
+    }
+
 }

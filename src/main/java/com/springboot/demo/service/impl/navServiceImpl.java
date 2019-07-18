@@ -27,4 +27,9 @@ public class navServiceImpl implements navService {
         navMapper.selectAllMessage();
         return Utils.returnPage(pageObj,page1,page,rows);
     }
+
+    @Override
+    public List selectAllMsgNoPage() throws Exception {
+        return navMapper.selectAllMessage();
+    }
 }
