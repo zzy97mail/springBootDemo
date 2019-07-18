@@ -53,3 +53,7 @@ function getQueryString(name) {
     }
     return null;
 }
+//退出登录
+function loginOut() {
+    document.location.href = "login.html";
+}

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../plug/layui/css/layui.css" media="all">
 </head>
 <body>
-<h1 style="text-align: center;">管理员信息列表</h1>
+<h1 style="text-align: center;">文章管理</h1>
 <table id="type" lay-filter="test"></table>
 <!--<textarea id="demo" style="display: none;"></textarea>-->
 <!--<button type="button" class="layui-btn layui-btn-normal">添加</button>-->
@@ -58,7 +58,6 @@
             var tr = obj.tr; //获得当前行 tr 的DOM对象
             if(layEvent === 'add'){ //添加
                 //do somehing
-                console.log(data)
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除行么', function(index){
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存

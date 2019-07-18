@@ -1,3 +1,6 @@
+$(function () {
+    sessionStorage.clear();
+})
 function postForm(){
     var manager_id=document.getElementById("username").value;
     var manager_pwd=document.getElementById("password").value;
