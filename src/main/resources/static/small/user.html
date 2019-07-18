@@ -61,7 +61,7 @@
                 document.location.href = "userEdit.html?page=1";
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除行么', function(index){
-                    deleteById(data.managerId)
+                    deleteById(data.manager_id)
 
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                     layer.close(index);
