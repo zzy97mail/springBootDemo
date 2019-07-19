@@ -53,5 +53,5 @@ function pageLoad() {
 
 //退出登录
 function loginOut() {
-    document.location.href = "login.html";
+    document.location.href = "login-page.html";
 }
