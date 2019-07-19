@@ -16,6 +16,9 @@
 <script src="../plug/jquery/jquery-3.4.1.min.js"></script>
 <script src="../plug/layui/layui.js"></script>
 <script>
+    $(function () {
+        sessionStorage.removeItem("typeData");
+    })
     layui.use('table', function(){
         var table = layui.table;
         table.render({
@@ -62,6 +65,10 @@
                 });
             } else if(layEvent === 'edit'){ //编辑
                 //do something
+                var type_data = {};
+                type_data.navName = data.nav_name;
+                type_data.navFeight = data.nav_feight;
+                sessionStorage.setItem("typeData",JSON.stringify(type_data));
                 document.location.href = "typeEdit.html?id="+data.nav_id;
             }
         });

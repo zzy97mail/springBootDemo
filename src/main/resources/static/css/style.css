@@ -137,7 +137,7 @@ form{
 .login-main .login-box{
 	width:980px;
 	height:400px;
-	background:url(http://mcs.gznc.edu.cn/index_files/main.gif) no-repeat;
+	background:url(../img/main.gif) no-repeat;
 	margin:15px auto;
 }
 .login-main .login-box .box{
