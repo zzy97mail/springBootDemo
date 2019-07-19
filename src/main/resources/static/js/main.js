@@ -23,9 +23,9 @@ function pageLoad() {
             layui.layer.confirm('还未登录', {
                 btn: ['确定']
                 , btn1:function(){
-                    document.location.href = "login.html";
+                    loginOut();
                 },cancel:function f() {
-                    document.location.href = "login.html";
+                    loginOut();
                 }
             });
         })
