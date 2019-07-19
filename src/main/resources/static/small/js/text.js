@@ -1,5 +1,5 @@
 function addBtn(){
-    document.location.href = "textEdit.html?id=''";
+    document.location.href = "textEdit.html?id=";
 }
 $(function () {
     sessionStorage.removeItem("textData");

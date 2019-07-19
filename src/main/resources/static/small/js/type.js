@@ -3,7 +3,7 @@ $(function () {
     sessionStorage.removeItem("typeData");
 });
 function addBtn(){
-    document.location.href = "typeEdit.html?id=''";
+    document.location.href = "typeEdit.html?id=";
 }
 layui.use('table', function(){
     var table = layui.table;
