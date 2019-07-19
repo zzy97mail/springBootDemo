@@ -23,7 +23,7 @@ public class managerServiceImpl implements managerService {
     @Override
     public String getPasswordByName(String managerName,String pwd) throws Exception {
         Map<String,String> map = managerMapper.getPasswordByName(managerName);
-        if (map.get("manager_pwd").equals(pwd)) {
+        if (map.get("manager_pwd").equals(Utils.encrypt(pwd+managerName))) {
             return map.get("manager_name");
         }else {
             return "";

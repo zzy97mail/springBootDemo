@@ -2,9 +2,12 @@ package com.springboot.demo.controller;
 
 import com.springboot.demo.common.R;
 import com.springboot.demo.service.managerService;
+import com.springboot.demo.utils.Utils;
+import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sun.security.provider.MD5;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +40,7 @@ public class LoginController {
         Map map = new HashMap();
         map.put("managerId",managerId);
         map.put("managerName",managerName);
-        map.put("managerPwd",managerPwd);
+        map.put("managerPwd", Utils.encrypt(managerPwd+managerId));
         managerService.upsertById(map);
         return R.ok();
     }

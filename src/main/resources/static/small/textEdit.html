@@ -53,10 +53,14 @@
                     $("#type").append('<option value="'+value.nav_id+'">'+value.nav_name+'</option>');
                 })
                 var old_data = JSON.parse(sessionStorage.getItem("textData"));
-                $("#type").val(old_data.type);
-                $("#title").val(old_data.title);
+                if (old_data!=null){
+                    $("#type").val(old_data.type);
+                    $("#title").val(old_data.title);
+                }
                 layui.form.render('select');
-                layui.layedit.setContent(index, old_data.content, false);
+                if (old_data!=null)
+                    layui.layedit.setContent(index, old_data.content, false);
+
             },
             error:function (e) {
                 console.error(e);
