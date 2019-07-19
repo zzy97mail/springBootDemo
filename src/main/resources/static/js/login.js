@@ -1,6 +1,8 @@
 $(function () {
     sessionStorage.clear();
 })
+layui.use('layer', function () {
+})
 function postForm(){
     var manager_id=document.getElementById("username").value;
     var manager_pwd=document.getElementById("password").value;
@@ -9,6 +11,7 @@ function postForm(){
         $("#msg").text("请输入用户名或密码");
         return;
     }
+    layui.layer.load(1,{shade: [0.8, '#393D49']});
     $.ajax({
         url: "/LoginController/getIsLogin",
         contentType: "application/x-www-form-urlencoded",
@@ -20,16 +23,17 @@ function postForm(){
         success: function(data){
             console.log(data);
             if (data.code == 0){
-                layui.use('layer', function () {
+
                     layui.layer.confirm('登录成功', {
                         btn: ['确定']
                         , btn1:function(){
                             jump(data.msg);
-                        },cancel:function f() {
+                        },end:function f() {
                             jump(data.msg);
-                        }
-                    });
-                })
+                        },time:3000,shadeClose:true
+                    }
+                    );
+
             } else {
                 $("#msg").text("用户名或密码错误");
             }

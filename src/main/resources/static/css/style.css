@@ -146,6 +146,7 @@ form{
 	background:#fff;
 	float:right;
 	margin:15px 40px;
+	opacity: 0.75;
 }
 .login-main .login-box .box h2{
 	font-size:20px;
