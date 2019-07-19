@@ -31,9 +31,17 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item"><a class="jump" page="3" href="">用户管理</a></li>
-                <li class="layui-nav-item"><a class="jump" page="2" href="">类别管理</a></li>
-                <li class="layui-nav-item"><a class="jump" page="4" href="">文章管理</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">菜单</a>
+                    <dl class="layui-nav-child">
+                        <dd id="page3"><a href="" class="jump" page="3" >用户管理</a></dd>
+                        <dd id="page2"><a href="" class="jump" page="2" >类别管理</a></dd>
+                        <dd id="page4"><a href="" class="jump" page="4" >文章管理</a></dd>
+                    </dl>
+                </li>
+<!--                <li class="layui-nav-item"><a class="jump" page="3" href="">用户管理</a></li>-->
+<!--                <li class="layui-nav-item"><a class="jump" page="2" href="">类别管理</a></li>-->
+<!--                <li class="layui-nav-item"><a class="jump" page="4" href="">文章管理</a></li>-->
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 $(function () {
     pageLoad();
+    $("#page"+sessionStorage.getItem("page")).addClass("layui-this")
     $(".jump").click(function () {
         sessionStorage.setItem("page",$(this).attr("page"));
     });
