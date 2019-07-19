@@ -6,9 +6,8 @@ layui.use('layer', function () {
 function postForm(){
     var manager_id=document.getElementById("username").value;
     var manager_pwd=document.getElementById("password").value;
-    document.getElementById("msg").innerHTML="";
     if(manager_pwd == "" || manager_id==""){
-        $("#msg").text("请输入用户名或密码");
+        layui.layer.msg("请输入用户名或密码");
         return;
     }
     layui.layer.load(1,{shade: [0.8, '#393D49']});
@@ -35,7 +34,7 @@ function postForm(){
                     );
 
             } else {
-                $("#msg").text("用户名或密码错误");
+                layui.layer.msg("用户名或密码错误");
             }
         },
         error:function (e) {
