@@ -36,7 +36,6 @@
     - utils 工具类
     - DemoApplication.java 启动类
   - resources 资源类
-  - application.yml 配置文件
     - static 静态文件
       - css 
       - img
@@ -46,3 +45,4 @@
       - login.html 旧的登录页面
       - login-page.html 新的登录界面
       - main.html 主界面框架
+  - application.yml 配置文件
