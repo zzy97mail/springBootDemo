@@ -73,6 +73,11 @@
                 document.location.href = "userEdit.html?page=1";
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除行么', function(index){
+                    var msg = JSON.parse(sessionStorage.getItem("usernameRel"));
+                    if (data.manager_id == msg.username) {
+                        layui.layer.msg("不能删除自己的账户");
+                        return;
+                    }
                     deleteById(data.manager_id)
 
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
@@ -114,7 +119,7 @@
                         });
                     })
                 } else {
-                    $("#msg").text("删除失败");
+                    layui.layer.msg("删除失败");
                 }
             },
             error:function (e) {

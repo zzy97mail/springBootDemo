@@ -4,13 +4,13 @@ $(function () {
     $(".jump").click(function () {
         sessionStorage.setItem("page",$(this).attr("page"));
     });
-    var name = sessionStorage.getItem("usernameRel");
-    if (name == null) {
+    var name = JSON.parse(sessionStorage.getItem("usernameRel"));
+    if (name.username == null) {
         loginOut();
     }else {
         var user = $("#userRelName");
         user.empty();
-        user.append('<img src="http://t.cn/RCzsdCq" class="layui-nav-img">'+name);
+        user.append('<img src="http://t.cn/RCzsdCq" class="layui-nav-img">'+name.name);
     }
 });
 

@@ -1,5 +1,10 @@
 $(function () {
     sessionStorage.clear();
+    $('#password').bind('keyup', function(event) {
+        if (event.keyCode == "13") {
+            postForm();
+        }
+    });
 })
 layui.use('layer', function () {
 })
@@ -10,7 +15,7 @@ function postForm(){
         layui.layer.msg("请输入用户名或密码");
         return;
     }
-    layui.layer.load(1,{shade: [0.8, '#393D49']});
+    var index_load = layui.layer.load(1,{shade: [0.8, '#393D49']});
     $.ajax({
         url: "/LoginController/getIsLogin",
         contentType: "application/x-www-form-urlencoded",
@@ -23,7 +28,7 @@ function postForm(){
             console.log(data);
             if (data.code == 0){
 
-                    layui.layer.confirm('登录成功(3秒后关闭)', {
+                    layui.layer.confirm('登录成功(3秒后自动关闭……)', {
                         btn: ['确定']
                         , btn1:function(){
                             jump(data.msg);
@@ -35,6 +40,7 @@ function postForm(){
 
             } else {
                 layui.layer.msg("用户名或密码错误");
+                layui.layer.closeAll('loading');
             }
         },
         error:function (e) {
@@ -45,6 +51,9 @@ function postForm(){
 // 帐号密码验证成功后的操作
 function jump(name) {
     sessionStorage.setItem("page","1");
-    sessionStorage.setItem("usernameRel",name);
+    var massage = {};
+    massage.name = name;
+    massage.username = $("#username").val();
+    sessionStorage.setItem("usernameRel",JSON.stringify(massage));
     document.location.href = "main.html";
 }
