@@ -113,6 +113,7 @@
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                     layer.close(index);
                     //向服务端发送删除指令
+                    deleteById(data.article_id);
                 });
             } else if(layEvent === 'edit'){ //编辑
                 //do something
@@ -125,7 +126,36 @@
             }
         });
     });
-
+    function deleteById(id) {
+        $.ajax({
+            url: "/articleController/deleteByArticleId",
+            contentType: "application/x-www-form-urlencoded",
+            type:"post",
+            data:{
+                articleId:id
+            },
+            success: function(data){
+                console.log(data);
+                if (data.code == 0){
+                    layui.use('layer', function () {
+                        layui.layer.confirm('删除成功', {
+                            btn: ['确定']
+                            , btn1:function(index){
+                                layer.close(index);
+                            },cancel:function f() {
+                                return;
+                            }
+                        });
+                    })
+                } else {
+                    $("#msg").text("删除失败");
+                }
+            },
+            error:function (e) {
+                console.error(e);
+            }
+        });
+    }
 
 </script>
 </body>

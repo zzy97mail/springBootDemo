@@ -37,4 +37,9 @@ public class articleServiceImpl implements articleService {
         return Utils.returnPage(pageObj, page1, page, rows);
     }
 
+    @Override
+    public int deleteByArticleId(String articleId) throws Exception {
+        return articleMapper.deleteByArticleId(articleId);
+    }
+
 }

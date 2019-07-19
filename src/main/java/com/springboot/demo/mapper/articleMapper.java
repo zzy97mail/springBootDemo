@@ -11,4 +11,6 @@ public interface articleMapper {
     List selectAllMessage();
 
     List getArticle(Map map);
+
+    int deleteByArticleId(String articleId);
 }

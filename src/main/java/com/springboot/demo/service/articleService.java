@@ -9,4 +9,6 @@ public interface articleService {
     List selectAllMessage() throws Exception;
 
     PageObj getArticle(String navId,String title,Integer page,Integer rows) throws Exception;
+
+    int deleteByArticleId(String articleId) throws Exception;
 }

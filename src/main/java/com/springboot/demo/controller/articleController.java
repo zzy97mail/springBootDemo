@@ -20,4 +20,12 @@ public class articleController {
     public R getAllMsg(Integer page,Integer rows,String title,String navId) throws Exception {
         return R.ok(articleService.getArticle(navId,title,page,rows));
     }
+
+    @RequestMapping("deleteByArticleId")
+    public R deleteByArticleId(String articleId) throws Exception {
+        articleService.deleteByArticleId(articleId);
+        return R.ok();
+
+    }
+
 }

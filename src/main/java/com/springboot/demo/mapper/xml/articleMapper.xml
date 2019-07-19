@@ -27,4 +27,9 @@
         </where>
     </select>
 
+    <delete id="deleteByArticleId">
+        delete from springBoot.article
+        where article_id = #{articleId}
+    </delete>
+
 </mapper>
