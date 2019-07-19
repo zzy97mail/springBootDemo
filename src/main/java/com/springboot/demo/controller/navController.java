@@ -24,4 +24,10 @@ public class navController {
         return R.ok(navService.selectAllMsgNoPage());
     }
 
+    @RequestMapping("upsertById")
+    public R upsertById(String navId, String navName, Integer navFeight) throws Exception{
+        navService.upsertById(navId,navName,navFeight);
+        return R.ok();
+    }
+
 }

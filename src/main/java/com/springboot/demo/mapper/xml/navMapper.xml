@@ -8,4 +8,11 @@
         order by nav_feight
     </select>
 
+    <insert id="upsertById">
+        INSERT INTO springBoot.nav (nav_id, nav_name, nav_feight)
+        VALUES (#{navId}, #{navName}, #{navFeight})
+        ON DUPLICATE KEY UPDATE nav_name=#{navName},
+                                nav_feight=#{navFeight}
+    </insert>
+
 </mapper>

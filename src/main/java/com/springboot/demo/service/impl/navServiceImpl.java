@@ -10,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -32,4 +35,16 @@ public class navServiceImpl implements navService {
     public List selectAllMsgNoPage() throws Exception {
         return navMapper.selectAllMessage();
     }
+
+    @Override
+    public int upsertById(String navId, String navName, Integer navFeight) {
+        if (navId.equals(""))
+            navId = UUID.randomUUID().toString();
+        Map map = new HashMap();
+        map.put("navId",navId);
+        map.put("navName",navName);
+        map.put("navFeight",navFeight);
+        return navMapper.upsertById(map);
+    }
+
 }
