@@ -22,12 +22,17 @@
             <i class="layui-icon">&#xe609;</i> 搜索
         </button>
     </div>
+    <div class="layui-input-inline">
+        <button onclick="addBtn();" type="button" class="layui-btn">
+            <i class="layui-icon">&#xe654;</i> 添加
+        </button>
+    </div>
 </div>
 <table id="type" lay-filter="test"></table>
 <!--<textarea id="demo" style="display: none;"></textarea>-->
 <!--<button type="button" class="layui-btn layui-btn-normal">添加</button>-->
 <script type="text/html" id="bar">
-    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="add">添加</a>
+<!--    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="add">添加</a>-->
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
@@ -38,6 +43,9 @@
     //     var layedit = layui.layedit;
     //     layedit.build('demo'); //建立编辑器
     // });
+    function addBtn(){
+        document.location.href = "textEdit.html?id=''";
+    }
     $(function () {
         sessionStorage.removeItem("textData");
         $.ajax({
@@ -95,7 +103,7 @@
                 {field: 'id', title: '序号',type:"numbers",width:80, sort: true}
                 ,{field: 'nav_name', title: '类别'}
                 ,{field: 'article_title', title: '新闻标题'}
-                // ,{field: 'article_content', title: '新闻内容'}
+                ,{field: 'article_content', title: '新闻内容'}
                 ,{field: 'article_date', title: '发布时间'}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#bar'}
             ]]
@@ -109,7 +117,7 @@
             var tr = obj.tr; //获得当前行 tr 的DOM对象
             if(layEvent === 'add'){ //添加
                 //do somehing
-                document.location.href = "textEdit.html?id=''";
+
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除行么', function(index){
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存

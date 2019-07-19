@@ -25,6 +25,7 @@
                 and a.article_title like #{title}
             </if>
         </where>
+        order by a.article_date DESC
     </select>
 
     <delete id="deleteByArticleId">
