@@ -34,7 +34,7 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" onclick="add();" lay-submit lay-filter="formDemo">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">返回</button>
+                <button type="reset" onclick="back();" class="layui-btn layui-btn-primary">返回</button>
             </div>
         </div>
     </div>
@@ -52,7 +52,11 @@
                 data.data.forEach(function (value) {
                     $("#type").append('<option value="'+value.nav_id+'">'+value.nav_name+'</option>');
                 })
+                var old_data = JSON.parse(sessionStorage.getItem("textData"));
+                $("#type").val(old_data.type);
+                $("#title").val(old_data.title);
                 layui.form.render('select');
+                layui.layedit.setContent(index, old_data.content, false);
             },
             error:function (e) {
                 console.error(e);
@@ -60,6 +64,9 @@
         });
     });
 
+    function back() {
+        document.location.href = "text.html";
+    }
     var index;
     layui.use('layedit', function(){
         var layedit = layui.layedit;
@@ -106,9 +113,9 @@
                         layui.layer.confirm('提交成功', {
                             btn: ['确定']
                             , btn1:function(){
-                                document.location.href = "user.html";
+                                back();
                             },cancel:function f() {
-                                document.location.href = "user.html";
+                                back();
                             }
                         });
                     })

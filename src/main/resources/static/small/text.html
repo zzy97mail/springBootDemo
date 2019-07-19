@@ -39,6 +39,7 @@
     //     layedit.build('demo'); //建立编辑器
     // });
     $(function () {
+        sessionStorage.removeItem("textData");
         $.ajax({
             url: "/navController/getAllMsgNoPage",
             contentType: "application/x-www-form-urlencoded",
@@ -78,7 +79,6 @@
                 ,limitName: 'rows' //每页数据量的参数名，默认：limit
             }
             ,parseData: function(res){ //res 即为原始返回的数据
-                console.log(res)
                 return {
                     "code": res.code, //解析接口状态
                     "msg": res.msg, //解析提示文本
@@ -118,12 +118,12 @@
                 });
             } else if(layEvent === 'edit'){ //编辑
                 //do something
+                var old_data = {};
+                old_data.title = data.article_title;
+                old_data.content = data.article_content;
+                old_data.type = data.nav_id;
+                sessionStorage.setItem("textData",JSON.stringify(old_data));
                 document.location.href = "textEdit.html?id="+data.article_id;
-                //同步更新缓存对应的值
-                obj.update({
-                    username: '123'
-                    ,title: 'xxx'
-                });
             }
         });
     });

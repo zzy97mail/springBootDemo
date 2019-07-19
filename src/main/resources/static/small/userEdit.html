@@ -35,7 +35,7 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" onclick="add();" lay-submit lay-filter="formDemo">立即提交</button>
-<!--                <button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                <button type="reset" onclick="back();" class="layui-btn layui-btn-primary">返回</button>
             </div>
         </div>
     </div>
@@ -64,7 +64,9 @@
         }
         return null;
     }
-
+    function back() {
+        document.location.href = "user.html";
+    }
     layui.use('layer', function () {
     })
     function add(){
@@ -95,9 +97,9 @@
                         layui.layer.confirm('提交成功', {
                             btn: ['确定']
                             , btn1:function(){
-                                document.location.href = "user.html";
+                                back();
                             },cancel:function f() {
-                                document.location.href = "user.html";
+                                back();
                             }
                         });
                     })

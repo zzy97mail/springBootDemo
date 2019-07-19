@@ -14,7 +14,7 @@
     </select>
 
     <select id="getArticle" resultType="map">
-        select a.article_id,a.article_title,a.article_date,b.nav_name from springBoot.article a
+        select a.article_id,a.article_title,a.article_date,b.nav_name,a.article_content,a.nav_id from springBoot.article a
         left join springBoot.nav b on b.nav_id = a.nav_id
         <where>
             1=1
