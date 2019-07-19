@@ -21,8 +21,13 @@ public class managerServiceImpl implements managerService {
     private managerMapper managerMapper;
 
     @Override
-    public boolean getPasswordByName(String managerName,String pwd) throws Exception {
-        return managerMapper.getPasswordByName(managerName).equals(pwd);
+    public String getPasswordByName(String managerName,String pwd) throws Exception {
+        Map<String,String> map = managerMapper.getPasswordByName(managerName);
+        if (map.get("manager_pwd").equals(pwd)) {
+            return map.get("manager_name");
+        }else {
+            return "";
+        }
     }
 
     @Override

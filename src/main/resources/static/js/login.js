@@ -24,9 +24,9 @@ function postForm(){
                     layui.layer.confirm('登录成功', {
                         btn: ['确定']
                         , btn1:function(){
-                            jump();
+                            jump(data.msg);
                         },cancel:function f() {
-                            jump();
+                            jump(data.msg);
                         }
                     });
                 })
@@ -40,7 +40,8 @@ function postForm(){
     });
 }
 // 帐号密码验证成功后的操作
-function jump() {
+function jump(name) {
     sessionStorage.setItem("page","1");
+    sessionStorage.setItem("usernameRel",name);
     document.location.href = "main.html";
 }

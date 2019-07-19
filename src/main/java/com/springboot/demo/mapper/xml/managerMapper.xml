@@ -3,8 +3,8 @@
 <mapper namespace="com.springboot.demo.mapper.managerMapper">
 
 
-    <select id="getPasswordByName" resultType="String">
-        select manager_pwd
+    <select id="getPasswordByName" resultType="Map">
+        select manager_pwd,manager_name
         from springBoot.manager
         where manager_id = #{managerName}
     </select>

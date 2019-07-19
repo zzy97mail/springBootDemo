@@ -9,7 +9,7 @@ import java.util.Map;
 @Component
 public interface managerMapper {
 
-    String getPasswordByName(String managerName);
+    Map<String,String> getPasswordByName(String managerName);
 
     List getAllMsg();
 

@@ -18,10 +18,11 @@ public class LoginController {
 
     @RequestMapping("getIsLogin")
     public R getIsLogin(String username,String password) throws Exception {
-        if (managerService.getPasswordByName(username,password)){
-            return R.ok();
-        }else {
+        String name = managerService.getPasswordByName(username,password);
+        if (name.equals("")){
             return R.error();
+        }else {
+            return R.ok(name);
         }
     }
 
