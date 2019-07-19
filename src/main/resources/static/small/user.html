@@ -18,6 +18,9 @@
 <script src="../plug/jquery/jquery-3.4.1.min.js"></script>
 <script src="../plug/layui/layui.js"></script>
 <script>
+    $(function () {
+        sessionStorage.removeItem("user_name");
+    })
     // layui.use('layedit', function(){
     //     var layedit = layui.layedit;
     //     layedit.build('demo'); //建立编辑器
@@ -69,6 +72,7 @@
                 });
             } else if(layEvent === 'edit'){ //编辑
                 //do something
+                sessionStorage.setItem("user_name",data.manager_name);
                 document.location.href = "userEdit.html?page=2&user="+data.manager_id;
                 // //同步更新缓存对应的值
                 // obj.update({

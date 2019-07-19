@@ -48,6 +48,7 @@
 
         } else {
             $("#username").attr("disabled",true).val(getQueryString("user"));
+            $("#name").val(sessionStorage.getItem("user_name"));
         }
     })
     /**
