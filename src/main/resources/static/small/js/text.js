@@ -34,7 +34,7 @@ layui.use('table', function(){
     var table = layui.table;
     table.render({
         elem: '#type'
-        ,height: 312
+        ,height: 500
         ,url: '/articleController/getAllMsg' //数据接口
         ,page: true //开启分页
         ,request: {
