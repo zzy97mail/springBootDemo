@@ -108,6 +108,7 @@
             var tr = obj.tr; //获得当前行 tr 的DOM对象
             if(layEvent === 'add'){ //添加
                 //do somehing
+                document.location.href = "textEdit.html?id=''";
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除行么', function(index){
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
@@ -117,7 +118,7 @@
                 });
             } else if(layEvent === 'edit'){ //编辑
                 //do something
-
+                document.location.href = "textEdit.html?id="+data.article_id;
                 //同步更新缓存对应的值
                 obj.update({
                     username: '123'

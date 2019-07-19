@@ -13,4 +13,6 @@ public interface articleMapper {
     List getArticle(Map map);
 
     int deleteByArticleId(String articleId);
+
+    int upsertById(Map map);
 }

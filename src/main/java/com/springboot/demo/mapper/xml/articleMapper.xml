@@ -32,4 +32,11 @@
         where article_id = #{articleId}
     </delete>
 
+    <insert id="upsertById">
+        INSERT INTO springBoot.article (article_id, article_title, article_date, article_content, nav_id)
+        VALUES (#{articleId}, #{articleTitle}, #{articleDate},#{articleContent},#{navId})
+        ON DUPLICATE KEY UPDATE article_title=#{articleTitle},
+                                article_content=#{articleContent},nav_id=#{navId}
+    </insert>
+
 </mapper>

@@ -10,9 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -41,5 +44,20 @@ public class articleServiceImpl implements articleService {
     public int deleteByArticleId(String articleId) throws Exception {
         return articleMapper.deleteByArticleId(articleId);
     }
+
+    @Override
+    public int upsertById(String articleId, String articleTitle, String articleContent, String navId) throws Exception {
+        Map map = new HashMap();
+        if (articleId.equals(""))
+            articleId = UUID.randomUUID().toString();
+        map.put("articleId",articleId);
+        map.put("articleContent",articleContent);
+        map.put("articleTitle",articleTitle);
+        map.put("navId",navId);
+        LocalDate localDate = LocalDate.now();
+        map.put("articleDate",localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        return articleMapper.upsertById(map);
+    }
+
 
 }

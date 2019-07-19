@@ -9,33 +9,32 @@
 <!--<form class="layui-form">-->
     <div style="width: 60%;margin-top: 66px;">
         <div class="layui-form-item">
-            <label class="layui-form-label">帐号</label>
-            <div class="layui-input-block">
-                <input type="text" id="username" name="title" required  lay-verify="required" placeholder="请输入帐号" autocomplete="off" class="layui-input">
+            <label class="layui-form-label">类别</label>
+            <div class="layui-input-block layui-form">
+                <select name="interest" id="type" lay-filter="aihao">
+                    <option value="">请选择</option>
+
+                </select>
+<!--                <input type="text" id="type" required  lay-verify="required" placeholder="请输入类别" autocomplete="off" class="layui-input">-->
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">真实姓名</label>
+            <label class="layui-form-label">标题</label>
             <div class="layui-input-block">
-                <input type="text" id="name" name="title" required  lay-verify="required" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
+                <input type="text" id="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">密码</label>
+            <label class="layui-form-label">内容</label>
             <div class="layui-input-block">
-                <input type="password" id="password" name="title" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">重复密码</label>
-            <div class="layui-input-block">
-                <input type="password" id="rePassword" name="title" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                <textarea id="content" style="display: none;"></textarea>
+<!--                <input type="password" id="password" name="title" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">-->
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" onclick="add();" lay-submit lay-filter="formDemo">立即提交</button>
-<!--                <button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                <button type="reset" class="layui-btn layui-btn-primary">返回</button>
             </div>
         </div>
     </div>
@@ -44,12 +43,28 @@
 <script src="../plug/layui/layui.js"></script>
 <script>
     $(function () {
-        if (getQueryString("page") == "1"){
+        $.ajax({
+            url: "/navController/getAllMsgNoPage",
+            contentType: "application/x-www-form-urlencoded",
+            type:"get",
+            success: function(data){
+                console.log(data);
+                data.data.forEach(function (value) {
+                    $("#type").append('<option value="'+value.nav_id+'">'+value.nav_name+'</option>');
+                })
+                layui.form.render('select');
+            },
+            error:function (e) {
+                console.error(e);
+            }
+        });
+    });
 
-        } else {
-            $("#username").attr("disabled",true).val(getQueryString("user"));
-        }
-    })
+    var index;
+    layui.use('layedit', function(){
+        var layedit = layui.layedit;
+        index = layedit.build('content'); //建立编辑器
+    });
     /**
      * 获取url后面的参数
      *
@@ -68,26 +83,22 @@
     layui.use('layer', function () {
     })
     function add(){
-        var username = $("#username").val();
-        var name = $("#name").val();
-        var password = $("#password").val();
-        var rePassword = $("#rePassword").val();
-        if (username === ""||name === ""||password===""||rePassword===""){
+        var type = $("#type").val();
+        var title = $("#title").val();
+        var content = layui.layedit.getContent(index);
+        if (type === ""||title === ""||content===""){
             layui.layer.msg("请把数据填写完整");
             return;
         }
-        if (password !== rePassword){
-            layui.layer.msg("两次密码不一致");
-            return;
-        }
         $.ajax({
-            url: "/LoginController/upsertById",
+            url: "/articleController/upsertById",
             contentType: "application/x-www-form-urlencoded",
             type:"post",
             data:{
-                managerId:$("#username").val(),
-                managerName:$("#name").val(),
-                managerPwd:$("#password").val()
+                articleId:getQueryString("id"),
+                articleTitle:title,
+                articleContent:content,
+                navId:type
             },
             success: function(data){
                 if (data.code == 0){

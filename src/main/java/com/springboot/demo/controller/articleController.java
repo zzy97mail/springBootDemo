@@ -28,4 +28,11 @@ public class articleController {
 
     }
 
+    @RequestMapping("upsertById")
+    public R upsertById(String articleId, String articleTitle, String articleContent, String navId) throws Exception{
+        articleService.upsertById(articleId,articleTitle,articleContent,navId);
+        return R.ok();
+    }
+
+
 }
