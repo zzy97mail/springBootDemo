@@ -30,4 +30,10 @@ public class navController {
         return R.ok();
     }
 
+    @RequestMapping("deleteByNavId")
+    public R  deleteByNavId(String navId) throws Exception{
+        navService.deleteByNavId(navId);
+        return R.ok();
+    }
+
 }

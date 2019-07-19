@@ -47,4 +47,9 @@ public class navServiceImpl implements navService {
         return navMapper.upsertById(map);
     }
 
+    @Override
+    public int deleteByNavId(String navId) throws Exception {
+        return navMapper.deleteByNavId(navId);
+    }
+
 }

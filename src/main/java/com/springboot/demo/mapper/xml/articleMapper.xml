@@ -17,11 +17,12 @@
         select a.article_id,a.article_title,a.article_date,b.nav_name from springBoot.article a
         left join springBoot.nav b on b.nav_id = a.nav_id
         <where>
+            1=1
             <if test="navId!='test'">
-                a.nav_id = #{navId}
+                and a.nav_id = #{navId}
             </if>
             <if test="title!=null and title!=''">
-                a.article_title like CONCAT('%',#{title},'%')
+                and a.article_title like #{title}
             </if>
         </where>
     </select>

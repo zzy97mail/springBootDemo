@@ -11,4 +11,6 @@ public interface navMapper {
     List selectAllMessage();
 
     int upsertById(Map map);
+
+    int deleteByNavId(String navId);
 }

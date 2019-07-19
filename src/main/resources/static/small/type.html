@@ -57,6 +57,7 @@
                 layer.confirm('真的删除行么', function(index){
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                     layer.close(index);
+                    deleteById(data.nav_id);
                     //向服务端发送删除指令
                 });
             } else if(layEvent === 'edit'){ //编辑
@@ -66,7 +67,36 @@
         });
     });
 
-
+    function deleteById(id) {
+        $.ajax({
+            url: "/navController/deleteByNavId",
+            contentType: "application/x-www-form-urlencoded",
+            type:"post",
+            data:{
+                navId:id
+            },
+            success: function(data){
+                console.log(data);
+                if (data.code == 0){
+                    layui.use('layer', function () {
+                        layui.layer.confirm('删除成功', {
+                            btn: ['确定']
+                            , btn1:function(index){
+                                layer.close(index);
+                            },cancel:function f() {
+                                return;
+                            }
+                        });
+                    })
+                } else {
+                    $("#msg").text("删除失败");
+                }
+            },
+            error:function (e) {
+                console.error(e);
+            }
+        });
+    }
 </script>
 </body>
 </html>

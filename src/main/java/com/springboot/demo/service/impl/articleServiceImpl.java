@@ -29,12 +29,12 @@ public class articleServiceImpl implements articleService {
     @Override
     public PageObj getArticle(String navId, String title, Integer page, Integer rows) throws Exception {
         Map map = new HashMap();
-        map.put("title",title);
-        map.put("navId",navId);
+        map.put("title", "%" + title + "%");
+        map.put("navId", navId);
         PageObj pageObj = new PageObj();
         Page<?> page1 = PageHelper.startPage(page, rows, true);
         articleMapper.getArticle(map);
-        return Utils.returnPage(pageObj,page1,page,rows);
+        return Utils.returnPage(pageObj, page1, page, rows);
     }
 
 }

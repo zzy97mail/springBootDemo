@@ -15,4 +15,9 @@
                                 nav_feight=#{navFeight}
     </insert>
 
+    <delete id="deleteByNavId">
+        delete from springBoot.nav
+        where nav_id = #{navId}
+    </delete>
+
 </mapper>
